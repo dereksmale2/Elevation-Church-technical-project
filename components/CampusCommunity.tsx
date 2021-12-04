@@ -4,20 +4,15 @@ import Link from 'next/link'
 
 export const CampusCommunity = () => {
   return (
-    <div>
-      <h2 className='uppercase text-center pt-10'>Choose your community</h2>
-      <h5 className='text-center text-gray-500 pt-1'>
-        Whether you are visiting a local campus community or joining us online
-        for the very first time, we can't wait to connect with you!
-      </h5>
-      <div className='object-left max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl'>
-        <div className='md:flex'>
-          <div className='md:flex-shrink-0'>
+    <div className='pl-52'>
+      <div className='max-w-sm bg-white rounded-xl shadow-md overflow-hidden md:max-w-sm'>
+        <div>
+          <div className='max-w-md'>
             <Image src={campusCommunityPic} alt='campus community photo' />
           </div>
           <Link href='/egroups/nocampus' passHref>
             <div className='p-8 hover:bg-gray-200 hover:shadow-lg cursor-pointer'>
-              <div className='uppercase tracking-wide text-sm text-black-500 font-bold'>
+              <div className='tracking-wide text-lg text-black-500 font-bold'>
                 Campus Community
               </div>
               <p className='mt-2 text-gray-500'>

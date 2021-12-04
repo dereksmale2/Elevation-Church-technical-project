@@ -4,15 +4,15 @@ import Link from 'next/link'
 
 export const Efam = () => {
   return (
-    <div>
-      <div className='object-right max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl'>
-        <div className='md:flex'>
-          <div className='md:flex-shrink-0'>
+    <div className='pr-52'>
+      <div className='max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-sm'>
+        <div>
+          <div className='max-w-md'>
             <Image src={eFamPic} alt='eFam photo' />
           </div>
           <Link href='/egroups/elevationonline' passHref>
             <div className='p-8 hover:bg-gray-200 hover:shadow-lg cursor-pointer'>
-              <div className='uppercase tracking-wide text-sm text-black-500 font-bold'>
+              <div className='tracking-wide text-lg text-black-500 font-bold'>
                 eFam
               </div>
               <p className='mt-2 text-gray-500'>

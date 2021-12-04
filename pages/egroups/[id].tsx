@@ -10,9 +10,9 @@ const EgroupSelector: NextPage = () => {
   return (
     <>
       <Header />
-      <div>
+      <div className='text-center pt-8'>
         <h1>Find an eGroup</h1>
-        <p>There's an {id} group waiting for you.</p>
+        <p>There's a {id} group waiting for you.</p>
       </div>
       <DropdownSelector />
     </>
