@@ -74,6 +74,7 @@ export const communityInfo = [
   },
   {
     recordType: 'Adult Group',
+    slugCampusName: 'elevation-online',
     schedule: 'Weekly',
     name: 'Cambios - Jóvenes Adultos Mixto (20-35 años)',
     meetingType: 'Virtual',
@@ -94,6 +95,7 @@ export const communityInfo = [
   },
   {
     recordType: 'Adult Group',
+    slugCampusName: 'ballantyne',
     schedule: 'Biweekly',
     name: 'Hiking eGroup - Everyone Welcome (Stephanie Netherly)',
     meetingType: 'In-person',
@@ -114,6 +116,7 @@ export const communityInfo = [
   },
   {
     recordType: 'Adult Group',
+    slugCampusName: 'ballantyne',
     schedule: 'Weekly',
     name: 'Desiring More - Bible Basics 101 (Melissa Simmons)',
     meetingType: 'Virtual',

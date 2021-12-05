@@ -10,7 +10,7 @@ export const Efam = () => {
           <div className='max-w-md'>
             <Image height='295' width='440' src={eFamPic} alt='eFam photo' />
           </div>
-          <Link href='/egroups/elevationonline' passHref>
+          <Link href='/egroups/elevation-online' passHref>
             <div className='p-8 hover:bg-gray-200 hover:shadow-lg cursor-pointer'>
               <div className='tracking-wide text-xl text-black-500 font-bold'>
                 eFam
