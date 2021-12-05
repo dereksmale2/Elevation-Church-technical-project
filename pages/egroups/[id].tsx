@@ -12,8 +12,6 @@ const EgroupSelector: NextPage = () => {
     return data.slugCampusName === id
   })
 
-  console.log(pageData)
-
   return (
     <>
       <Header />
