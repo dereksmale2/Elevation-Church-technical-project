@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export const CampusCommunity = () => {
   return (
-    <div className='pl-72'>
+    <div>
       <div className='max-w-sm bg-white rounded-xl shadow-md overflow-hidden md:max-w-sm'>
         <div>
           <div className='max-w-sm'>

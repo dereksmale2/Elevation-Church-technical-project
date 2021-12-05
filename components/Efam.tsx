@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export const Efam = () => {
   return (
-    <div className='pl-20'>
+    <div>
       <div className='max-w-sm bg-white rounded-xl shadow-md overflow-hidden md:max-w-sm'>
         <div>
           <div className='max-w-md'>

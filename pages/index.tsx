@@ -10,7 +10,7 @@ const Home: NextPage = () => {
         Whether you are visiting a local campus community or joining us online
         for the very first time, we can't wait to connect with you!
       </h5>
-      <div className='flex flex-wrap justify-evenly'>
+      <div className='flex flex-wrap justify-center space-x-3'>
         <CampusCommunity />
         <Efam />
       </div>
