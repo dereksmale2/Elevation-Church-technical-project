@@ -138,6 +138,7 @@ export const communityInfo = [
   {
     recordType: 'Adult Group',
     schedule: 'Weekly',
+    slugCampusName: 'asheville',
     name: "Intentional Parenting & Prayer- Women's eGroup (Shawna Scott)",
     meetingType: 'In-person',
     locationZipCode: '',
@@ -168,7 +169,7 @@ export const communityInfo = [
     locationName: 'Fort Mill',
     language: 'English',
     gender: 'Female',
-    egroupType: '',
+    egroupType: 'Women',
     egroupStudy: '',
     description:
       "This is a women's sermon study group led by a mother and daughter. We are all either mothers or daughters, and we would love to grow in relationship with God and each other with you!",

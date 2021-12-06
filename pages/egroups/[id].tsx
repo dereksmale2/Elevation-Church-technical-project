@@ -15,10 +15,17 @@ const EgroupSelector: NextPage = () => {
   return (
     <>
       <Header />
-      <div className='text-center pt-8'>
-        <h1>Find an eGroup</h1>
-        <p>There's an {pageData[0].campusName} group waiting for you.</p>
-      </div>
+      {id === 'nocampus' ? (
+        <div className='text-center pt-8'>
+          <h1>Find an eGroup</h1>
+          <p>There's an eGroup waiting for you.</p>
+        </div>
+      ) : (
+        <div className='text-center pt-8'>
+          <h1>Find an eGroup</h1>
+          <p>There's an {pageData[0].campusName} group waiting for you.</p>
+        </div>
+      )}
       <DropdownSelector />
     </>
   )

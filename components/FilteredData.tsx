@@ -1,7 +1,32 @@
 import { communityInfo } from '../data'
 import Group from '../types/group'
+import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
 
 export const FilteredData = () => {
+  const [filters, setFilters] = useState([])
+  const [childCare, setChildCare] = useState(false)
+
+  useEffect(() => {
+    console.log(filters)
+  }, [filters])
+
+  const handleChildCare = () => {
+    setChildCare(!childCare)
+  }
+
+  const setFilter = (item: any) => {
+    const filtersArray = [...filters]
+
+    const index = filtersArray.indexOf(item)
+    if (index > -1) {
+      filtersArray.splice(index, 1)
+    } else {
+      filtersArray.push(item)
+    }
+    setFilters(filtersArray)
+  }
+
   const filteredData = (key: any) => {
     return uniq(
       communityInfo.map((data) => {
@@ -12,69 +37,114 @@ export const FilteredData = () => {
 
   let uniq = (a: Array<Group>) => [...new Set(a)]
 
+  const uniqueCampusCommunities = [
+    ...new Map(communityInfo.map((v) => [v.slugCampusName, v])).values()
+  ]
+
   return (
     <div>
       <div>
         <h3>Campus Community</h3>
-        <ul>
-          <button className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'>
-            {filteredData('campusName')}
-          </button>
-        </ul>
+        {uniqueCampusCommunities.map((campus) => {
+          return (
+            <Link
+              key={campus.id}
+              href={`/egroups/${campus.slugCampusName}`}
+              className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'
+            >
+              {campus.campusName}
+            </Link>
+          )
+        })}
       </div>
       <div>
-        <h3>Demographic</h3>
-        <ul>
-          <button className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'>
-            {filteredData('demographic')}
-          </button>
-        </ul>
+        <h3 className='font-bold text-lg'>Demographic</h3>
+        {filteredData('demographic').map((item) => {
+          return (
+            <button
+              onClick={() => setFilter(item)}
+              key={item}
+              className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'
+            >
+              {item}
+            </button>
+          )
+        })}
       </div>
       <div>
         <h3>Gender</h3>
-        <ul>
-          <button className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'>
-            {filteredData('gender')}
-          </button>
-        </ul>
+        {filteredData('gender').map((item) => {
+          return (
+            <button
+              onClick={() => setFilter(item)}
+              key={item}
+              className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'
+            >
+              {item}
+            </button>
+          )
+        })}
       </div>
       <div>
         <h3>Topic</h3>
-        <ul>
-          <button className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'>
-            {filteredData('egroupType')}
-          </button>
-        </ul>
+        {filteredData('egroupType').map((item) => {
+          return (
+            <button
+              onClick={() => setFilter(item)}
+              key={item}
+              className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'
+            >
+              {item}
+            </button>
+          )
+        })}
       </div>
       <div>
         <h3>Days</h3>
-        <ul>
-          <button className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'>
-            {filteredData('dayOfWeek')}
-          </button>
-        </ul>
+        {filteredData('dayOfWeek').map((item) => {
+          return (
+            <button
+              onClick={() => setFilter(item)}
+              key={item}
+              className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'
+            >
+              {item}
+            </button>
+          )
+        })}
       </div>
       <div>
         <h3>In-Person</h3>
-        <ul>
-          <button className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'>
-            {filteredData('meetingType')}
-          </button>
-        </ul>
+        {filteredData('meetingType').map((item) => {
+          return (
+            <button
+              onClick={() => setFilter(item)}
+              key={item}
+              className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'
+            >
+              {item}
+            </button>
+          )
+        })}
       </div>
       <div>
         <h3>Language</h3>
-        <ul>
-          <button className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'>
-            {filteredData('language')}
-          </button>
-        </ul>
+        {filteredData('language').map((item) => {
+          return (
+            <button
+              onClick={() => setFilter(item)}
+              key={item}
+              className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'
+            >
+              {item}
+            </button>
+          )
+        })}
       </div>
       <div>
         <h3>Childcare</h3>
-        <ul>
-          <div
-            className='
+        <div
+          className='
               relative
               inline-block
               w-10
@@ -85,12 +155,14 @@ export const FilteredData = () => {
               duration-200
               ease-in
               '
-          >
-            <input
-              type='checkbox'
-              name='toggle'
-              id='toggle'
-              className='
+        >
+          <input
+            checked={childCare}
+            onChange={handleChildCare}
+            type='checkbox'
+            name='toggle'
+            id='toggle'
+            className='
               toggle-checkbox
               absolute
               block
@@ -102,10 +174,10 @@ export const FilteredData = () => {
               appearance-none
               cursor-pointer
               '
-            />
-            <label
-              for='toggle'
-              className='
+          />
+          <label
+            for='toggle'
+            className='
               toggle-label
               block
               overflow-hidden
@@ -114,10 +186,8 @@ export const FilteredData = () => {
               bg-gray-300
               cursor-pointer
               '
-            ></label>
-          </div>
-          <li>{filteredData('')}</li>
-        </ul>
+          ></label>
+        </div>
       </div>
     </div>
   )
