@@ -36,6 +36,8 @@ export const FilteredData = () => {
     )
   }
 
+  /* Clear selected filters function */
+
   let uniq = (a: Array<Group>) => [...new Set(a)]
 
   const uniqueCampusCommunities = [
