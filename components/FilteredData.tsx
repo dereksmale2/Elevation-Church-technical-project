@@ -50,9 +50,11 @@ export const FilteredData = () => {
             <Link
               key={campus.id}
               href={`/egroups/${campus.slugCampusName}`}
-              className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'
+              passHref
             >
-              {campus.campusName}
+              <button className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'>
+                {campus.campusName}
+              </button>
             </Link>
           )
         })}

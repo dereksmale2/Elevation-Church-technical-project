@@ -18,7 +18,7 @@ const EgroupSelector: NextPage = () => {
       {id === 'nocampus' ? (
         <div className='text-center pt-8'>
           <h1>Find an eGroup</h1>
-          <p>There's an eGroup waiting for you.</p>
+          <p>There's a group waiting for you.</p>
         </div>
       ) : (
         <div className='text-center pt-8'>
