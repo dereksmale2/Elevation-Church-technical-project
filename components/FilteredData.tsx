@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import { communityInfo } from '../data'
 import Group from '../types/group'
 import React, { useState, useEffect } from 'react'
@@ -7,8 +8,10 @@ import { DisplayedData } from './DisplayedData'
 export const FilteredData = () => {
   const [filters, setFilters] = useState([])
   const [childCare, setChildCare] = useState(false)
+  const [groups, setGroups] = useState(communityInfo)
 
   useEffect(() => {
+    filteredGroups(filters)
     console.log(filters)
   }, [filters])
 
@@ -16,27 +19,58 @@ export const FilteredData = () => {
     setChildCare(!childCare)
   }
 
-  const setFilter = (item: any) => {
+  // Filter through an array and push the items selected into a new array/splice items that already exist in the array if doubled
+
+  const setFilter = (newFilter: any) => {
     const filtersArray = [...filters]
 
-    const index = filtersArray.indexOf(item)
-    if (index > -1) {
-      filtersArray.splice(index, 1)
+    let foundIndex = filtersArray.findIndex((x) => x.filter == newFilter.filter)
+    if (foundIndex > -1) {
+      filtersArray.splice(foundIndex, 1)
     } else {
-      filtersArray.push(item)
+      filtersArray.push(newFilter)
     }
     setFilters(filtersArray)
   }
 
+  // Map through the filtered data and return
+
   const filteredData = (key: any) => {
-    return uniq(
+    return uniqArray(
       communityInfo.map((data) => {
-        return data[key]
+        return {
+          category: key,
+          filter: data[key]
+        }
       })
     )
   }
 
-  /* Clear selected filters function */
+  // Create a copy of each group, filter through to update based on which filter is selected, more to do
+
+  const filteredGroups = (filters: any) => {
+    let groupsCopy = [...groups]
+
+    if (filters.length > 0) {
+      filters.forEach((filter: any) => {
+        groupsCopy.filter((group) => {
+          console.log(group.name)
+        })
+      })
+    }
+    setGroups(groupsCopy)
+  }
+
+  // Keep each array unique -> https://newbedev.com/remove-duplicates-from-an-array-of-objects-in-javascript
+
+  let uniqArray = (arr: any) => {
+    return arr.filter(
+      (v, i, a) =>
+        a.findIndex((t) => JSON.stringify(t) === JSON.stringify(v)) === i
+    )
+  }
+
+  // Make the campus selection one choice, identified by slugCampusName. Only one is chosen at a time
 
   let uniq = (a: Array<Group>) => [...new Set(a)]
 
@@ -46,8 +80,8 @@ export const FilteredData = () => {
 
   return (
     <>
-      <DisplayedData />
       <div>
+        <DisplayedData data={groups} />
         <div>
           <h3 className='font-bold text-lg'>Campus Community</h3>
           {uniqueCampusCommunities.map((campus) => {
@@ -70,10 +104,10 @@ export const FilteredData = () => {
             return (
               <button
                 onClick={() => setFilter(item)}
-                key={item}
+                key={item.filter}
                 className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'
               >
-                {item}
+                {item.filter}
               </button>
             )
           })}
@@ -84,10 +118,10 @@ export const FilteredData = () => {
             return (
               <button
                 onClick={() => setFilter(item)}
-                key={item}
+                key={item.filter}
                 className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'
               >
-                {item}
+                {item.filter}
               </button>
             )
           })}
@@ -98,10 +132,10 @@ export const FilteredData = () => {
             return (
               <button
                 onClick={() => setFilter(item)}
-                key={item}
+                key={item.filter}
                 className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'
               >
-                {item}
+                {item.filter}
               </button>
             )
           })}
@@ -112,10 +146,10 @@ export const FilteredData = () => {
             return (
               <button
                 onClick={() => setFilter(item)}
-                key={item}
+                key={item.filter}
                 className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'
               >
-                {item}
+                {item.filter}
               </button>
             )
           })}
@@ -126,10 +160,10 @@ export const FilteredData = () => {
             return (
               <button
                 onClick={() => setFilter(item)}
-                key={item}
+                key={item.filter}
                 className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'
               >
-                {item}
+                {item.filter}
               </button>
             )
           })}
@@ -140,10 +174,10 @@ export const FilteredData = () => {
             return (
               <button
                 onClick={() => setFilter(item)}
-                key={item}
+                key={item.filter}
                 className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'
               >
-                {item}
+                {item.filter}
               </button>
             )
           })}
@@ -183,7 +217,7 @@ export const FilteredData = () => {
               '
             />
             <label
-              for='toggle'
+              htmlFor='toggle'
               className='
               toggle-label
               block

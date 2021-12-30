@@ -1,12 +1,14 @@
-import { communityInfo } from '../data'
-
-export const DisplayedData = () => {
+export const DisplayedData = ({ data }) => {
   return (
-    <div className='text-right justify-end flex flex-wrap pr-48'>
-      <h2>Brand New Groups</h2>
-      {/* {communityInfo.map((eGroup) => {
-        return <div key={eGroup.id}>eGroup </div>
-      })} */}
+    <div className='text-right justify-end'>
+      <h2 className='pr-16'>Brand New Groups</h2>
+      {data.map((eGroup) => {
+        return (
+          <div className='container mx-auto' key={eGroup.id}>
+            {eGroup.name} - {eGroup.campusName}
+          </div>
+        )
+      })}
     </div>
   )
 }
